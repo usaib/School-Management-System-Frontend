@@ -28,11 +28,27 @@ The above copyright notice and this permission notice shall be included in all c
   <!-- CSS Files -->
   <link href="../assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
   <!--Font Awesome-->
-  <script src="https://kit.fontawesome.com/8f8d45c15d.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/8f8d45c15d.js" defer crossorigin="anonymous"></script>
   <!-- Material Design Bootstrap -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
   <!-- Latest compiled and minified CSS -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+  <script src="axios_notification_panel.js" defer></script>
+  <style>
+    .collapsable{
+  display: none;
+  }
+  .collapsableclasstable{
+  display: none;
+ 
+  }
+  .collapsablesectable{
+  display: none;
+
+  }
+  </style>
+  
 </head>
 
 
@@ -44,7 +60,7 @@ The above copyright notice and this permission notice shall be included in all c
   
           Tip 2: you can also add an image using data-image tag
       -->
-      <div class="logo"><a href="#" class="simple-text"><img src="../assets/img/img.png" width="50px"></a><a href="#"
+      <div class="logo"><a href="#" class="simple-text"><img src="../assets/img/logo.png" width="50px"></a><a href="#"
           class="simple-text logo-normal">
           Code Node
         </a></div>
@@ -139,9 +155,12 @@ The above copyright notice and this permission notice shall be included in all c
                         Notifications</button></a>
                     <!--Modal-->
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-success pull-right" data-toggle="modal"
-                      data-target="#Modal1Center">
+                    <button type="button" id='recipients' class="btn btn-success pull-right" data-toggle="modal"
+                      data-target="#Modal1Center" >
                       Recipients
+                    </button>
+                    <button style="display: none;" type="button" id="buttonshow" class="btn btn-success pull-right">
+                      Show Full Table
                     </button>
 
                     <!-- Modal -->
@@ -159,15 +178,15 @@ The above copyright notice and this permission notice shall be included in all c
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
-                          <div class="modal-body">
-                            <select class="selectpicker" data-style="btn-warning" title="Choose Class">
-                              <option>Rec-Lily</option>
-                              <option>Ketchup</option>
-                              <option>Barbecue</option>
+                          <div class="modal-body" >
+                            <select class="selectpicker" id='classes_sections' data-style="btn-warning" title="Choose Class">
+                          
+                              
+  
                             </select>
                           </div>
                           <div class="modal-footer d-flex justify-content-center">
-                            <button type="button" class="btn btn-success">Submit</button>
+                            <button type="button" onclick='submitclassesforTOS()' class="btn btn-success">Submit</button>
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                           </div>
                         </div>
@@ -175,19 +194,9 @@ The above copyright notice and this permission notice shall be included in all c
                     </div>
                     <div class="clearfix"></div>
                     <div class="card-body md-6 sm-6 float-right">
-                      <table class="table table-hover" id="studentTable">
-                        <tbody id="myTable">
-                          <thead>
-                            <th>Name</th>
-                            <th>Phone</th>
-                            <th>F name</th>
-                          </thead>
-                          <tr>
-                            <td>Ahsan</td>
-                            <td>123456789</td>
-                            <td>Ehtesham</td>
-                          </tr>
-                        </tbody>
+                      <table class="table table-hover" id="class_table">
+                        <input style="display: none;" type="checkbox" id="checkbox" onClick="toggle(this)" /><label style="display: none;" id="select" for="name"><b>Select All</b></label>
+                        <!--  -->
                       </table>
                     </div>
                     <div class="row">
@@ -207,7 +216,7 @@ The above copyright notice and this permission notice shall be included in all c
                       <div class="col-md-5">
                         <div class="form-group">
                           <label class="bmd-label-floating">Subject</label>
-                          <input type="text" class="form-control">
+                          <input id='title' type="text" class="form-control">
                         </div>
                       </div>
                     </div>
@@ -215,14 +224,14 @@ The above copyright notice and this permission notice shall be included in all c
                       <div class="col-md-5">
                         <div class="form-group">
                           <label class="bmd-label-floating"> Message</label>
-                          <textarea class="form-control" rows="5"></textarea>
+                          <textarea id='description' class="form-control" rows="5"></textarea>
                         </div>
                       </div>
                     </div>
-                    <button type="button" class="btn btn-success pull-left"
+                    <button onclick="Send_Notifications()" type="button" class="btn btn-success pull-left"
                       onclick="md.showNotification('top','center')">Send Notification</button>
 
-                    <button type="button" class="btn btn-outline-info pull-left"
+                    <button onclick="Send_Notifications_toAll()" type="button" class="btn btn-outline-info pull-left"
                       onclick="md.showNotification1('top','center')">Send to all Students</button>
                     <div class="clearfix"></div>
                   </form>
@@ -286,9 +295,11 @@ The above copyright notice and this permission notice shall be included in all c
     <script src="../assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
     <!-- Material Dashboard DEMO methods, don't include it in your project! -->
     <script src="../assets/demo/demo.js"></script>
+    
     <script>
       $(document).ready(function () {
         $().ready(function () {
+         
           $sidebar = $('.sidebar');
 
           $sidebar_img_container = $sidebar.find('.sidebar-background');

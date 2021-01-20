@@ -30,10 +30,13 @@ The above copyright notice and this permission notice shall be included in all c
     <!--Font Awesome-->
     <script src="https://kit.fontawesome.com/8f8d45c15d.js" crossorigin="anonymous"></script>
     <!-- Material Design Bootstrap -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+        <script src="classsecdisplay_axios.js"></script>
 </head>
 
 
@@ -52,20 +55,15 @@ The above copyright notice and this permission notice shall be included in all c
                                 <div class="d-flex justify-content-end">
                                     <a href="allclasses.html"><button type="button" class="btn btn-info">View All Classes</button></a>
                                 </div>
-                                <table class="table table-hover">
-                                    <thead class="text-info">
-                                        <th>Class ID</th>
-                                        <th>Class Name</th>
-                                        <th>Roman Name</th>
-                                        <th>Action</th>
-                                    </thead>
-                                    <tbody id="myTable">
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Dakota Rice</td>
-                                            <td>$36,738</td>
-                                        </tr>
-                                    </tbody>
+                               
+                                <button id='showfullclasstable' type="button" class="btn btn-info">Show Full Class Table</button>
+                                <button id='showfullsectable' type="button" class="btn btn-info">Show Full Sections Table</button>
+                                
+                                <table id='class_table' class="table table-hover">
+                                    
+                                </table>
+                                <table id='sections_table' class="table table-hover">
+                                    
                                 </table>
                             </div>
                         </div>

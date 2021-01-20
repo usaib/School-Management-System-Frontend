@@ -4,7 +4,8 @@
   "description": "Material Dasboard, a Google Material Desgin. Coded by Creative Tim",
   "main": "index.html",
   "directories": {
-    "example": "root"
+    "doc": "docs",
+    "example": "examples"
   },
   "scripts": {
     "open-app": "gulp open-app",

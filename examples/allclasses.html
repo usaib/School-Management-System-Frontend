@@ -32,90 +32,15 @@ The above copyright notice and this permission notice shall be included in all c
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
     <!-- Latest compiled and minified CSS -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <script src="createClass_axios.js"></script>
 </head>
 
 
 <body class="">
     <div class="wrapper ">
-        <!--<div class="sidebar" data-color="azure" data-background-color="black" data-image="../assets/img/sidebar.jpg">
-            
-            <div class="logo"><a href="#" class="simple-text"><img src="../assets/img/img.png" width="50px"></a><a
-                    href="#" class="simple-text logo-normal">
-                    Code Node
-                </a></div>
-            <div class="sidebar-wrapper">
-                <ul class="nav">
-                    <li class="nav-item ">
-                        <a class="nav-link" href="./dashboard.html">
-                            <i class="material-icons">dashboard</i>
-                            <p>Dashboard</p>
-                        </a>
-                    </li>
-                    <li class="nav-item active ">
-                        <a class="nav-link" href="./notification.html">
-                            <i class="material-icons">notifications</i>
-                            <p>Notifications</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="./results.html">
-                            <i class="material-icons">book</i>
-                            <p>Results</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="./timetable.html">
-                            <i class="material-icons">date_range</i>
-                            <p>Time Table</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="./ptm.html">
-                            <i class="material-icons">meeting_room</i>
-                            <p>Parents Teacher Meeting</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="./feedback.html">
-                            <i class="material-icons">feedback</i>
-                            <p>Feedback</p>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="main-panel">
-            
-            <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
-                <div class="container-fluid">
-                    <div class="navbar-wrapper">
-                        <a class="navbar-brand" href="javascript:;">Notifications</a>
-                    </div>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="navbar-toggler-icon icon-bar"></span>
-                        <span class="navbar-toggler-icon icon-bar"></span>
-                        <span class="navbar-toggler-icon icon-bar"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-end">
-                        <ul class="navbar-nav">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link" href="index.html" id="navbarLogout" aria-haspopup="true"
-                                    aria-expanded="false">
-                                    <i class="material-icons">logout</i>
-                                    <p class="d-lg-none d-md-block">
-                                        Log Out
-                                    </p>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-             End Navbar -->
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
@@ -126,24 +51,8 @@ The above copyright notice and this permission notice shall be included in all c
                                 <p class="card-category">View All Classes</p>
                             </div>
                             <div class="card-body table-responsive">
-                                <table class="table table-hover">
-                                    <thead class="text-info">
-                                        <th>Class Name</th>
-                                        <th>Class Section ID</th>
-                                        <th>Room Number</th>
-                                        <th>Section Name</th>
-                                        <th>Strength</th>
-                                        <th>Action</th>
-                                    </thead>
-                                    <tbody id="myTable">
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Dakota Rice</td>
-                                            <td>$36,738</td>
-                                            <td>lily</td>
-                                            <td>20</td>
-                                        </tr>
-                                    </tbody>
+                                <table id='allclassestable' class="table table-hover">
+                                   
                                 </table>
                             </div>
                         </div>
